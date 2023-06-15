@@ -1,0 +1,386 @@
+/*****Elements*****/
+body {
+  background-color: #22232e;
+  background-image: linear-gradient(to bottom right, #22232e, #898a91, #22232e);
+  font-family: "Quattrocento Sans", sans-serif;
+  height: 100vh;
+}
+
+button {
+  background-color: #ef233c;
+  color: #edf2f4;
+  cursor: pointer;
+  font-size: 1.2em;
+  border: #0f0f14 solid 2px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px #91a1b2;
+  padding: 10px;
+  width: 5em;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: #e70329;
+  font-family: "Playfair Display", serif;
+  font-weight: bolder;
+  text-shadow: #0f0f14 2px 2px;
+}
+
+h1 {
+  font-size: 3em;
+}
+
+h2 {
+  font-size: 2.5em;
+}
+
+h3 {
+  font-size: 2em;
+}
+
+h4 {
+  font-size: 1.7em;
+}
+
+input {
+  font-size: 1.5em;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  width: 75%;
+}
+
+p {
+  color: #edf2f4;
+  font-size: 1.2em;
+}
+
+table {
+  width: 75%;
+  margin: 5% auto;
+  height: 65%;
+  border-collapse: collapse;
+}
+
+td {
+  width: 20%;
+  text-align: center;
+  margin: 0;
+  background-color: #c2c4c7;
+}
+
+th {
+  width: 20%;
+  color: #edf2f4;
+  background-color: #e70329;
+}
+
+/*****Classes*****/
+.class-div,
+.race-div,
+.alignment-div,
+.ability-btn,
+.racial-bonus-btn {
+  border: #edf2f4 solid 2px;
+  width: 25%;
+  margin: 0.7em auto;
+  color: #edf2f4;
+  text-align: center;
+  padding: 1em;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px #91a1b2;
+  background-color: #4e4f57;
+  cursor: pointer;
+}
+
+.ability-btn,
+.racial-bonus-btn {
+  background-color: #e70329;
+  width: 28%;
+}
+
+.ability-btn:disabled,
+.racial-bonus-btn:disabled {
+  background-color: #22232e;
+  filter: brightness(70%);
+  box-shadow: none;
+}
+
+.class-div:hover,
+.race-div:hover,
+.alignment-div:hover,
+.ability-btn:hover,
+.racial-bonus-btn:hover {
+  box-shadow: inset 4px 4px 8px #4e4f57;
+  filter: brightness(70%);
+}
+
+.bottom-left {
+  border-radius: 0 0 0 10px;
+}
+
+.bottom-right {
+  border-radius: 0 0 10px 0;
+}
+
+.btn-container {
+  width: 50%;
+  margin: 2em auto;
+  display: flex;
+  justify-content: space-around;
+}
+
+.class-head {
+  color: #edf2f4;
+  background-color: #ef233c !important;
+  border-top: #0f0f14 1px solid;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.die-roll {
+  background-color: #edf2f4;
+  padding: 10px;
+  width: 20px;
+  height: 20px;
+  margin: auto;
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bold;
+  border: #3a0000 5px outset;
+  border-radius: 5px;
+}
+
+.displayed-input {
+  background-color: #0f0f14;
+  padding: 1em;
+  border-radius: 10px;
+  margin-top: 0;
+}
+
+.low-roll {
+  filter: brightness(50%);
+}
+
+.low-roll:after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 0;
+  font-size: 1.2em;
+  content: "\274c";
+}
+
+.modal {
+  position: fixed;
+  height: 85vh;
+  width: 85vw;
+  top: 7.5vh;
+  left: 7.5vw;
+  z-index: 3;
+  border-radius: 20px;
+  background-color: #55575e;
+}
+
+.overlay {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  background-color: #0f0f14;
+  opacity: 0.7;
+  z-index: 2;
+}
+
+.roll-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40%;
+  height: 100%;
+  padding: 1.2em;
+  border: 2px #edf2f4 solid;
+  background-color: #22232e;
+  border-radius: 5px;
+  justify-content: space-between;
+  margin: auto;
+}
+
+.roll-container {
+  display: flex;
+  width: 85%;
+  height: 12%;
+  margin: auto;
+}
+
+.section-div {
+  width: 95%;
+  height: 95%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.top-left {
+  border-radius: 10px 0 0 0;
+}
+
+.top-right {
+  border-radius: 0 10px 0 0;
+}
+
+.total-roll {
+  background-color: #e70329;
+  color: #edf2f4;
+  padding: 12px;
+  width: 24px;
+  height: 24px;
+  margin: auto;
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bold;
+  border-radius: 5px;
+  border: #d5dadd 5px outset;
+}
+
+/*****Combos*****/
+.even td {
+  background-color: #edf2f4;
+}
+
+.modal .btn-container {
+  width: 85%;
+  position: absolute;
+  bottom: 0;
+  left: 7.5%;
+}
+
+.modal .btn-container button {
+  width: 35%;
+}
+
+.modal h3 {
+  text-align: center;
+  font-size: 1.5em;
+  margin-top: 0;
+  margin-bottom: 0.3em;
+  padding: 0.7em;
+  text-shadow: #0f0f14 1px 1px;
+  border-radius: 20px 20px 0 0;
+  color: #edf2f4;
+  background-color: #e70329;
+}
+
+.modal h4 {
+  font-size: 1.6em;
+  margin: 0.3em 1em;
+  text-shadow: #3a0000 1px 1px;
+}
+
+.modal p {
+  font-size: 1em;
+  padding: 0.2em;
+  margin: 0.2em 1.2em;
+}
+
+/*****IDs*****/
+#class-container,
+#race-container,
+#alignment-container,
+#ability-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 85%;
+}
+
+#name-button {
+  width: 20%;
+}
+
+#name-input-div {
+  width: 65%;
+}
+
+#rolling-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 85%;
+  align-items: center;
+  margin: 2em auto;
+}
+
+/*****Colors*****/
+.barbarian,
+.dragonborn {
+  background-color: #e7623e !important;
+}
+
+.bard,
+.elf {
+  background-color: #ab6dac !important;
+}
+
+.cleric,
+.halfling {
+  background-color: #91a1b2 !important;
+}
+
+.druid {
+  background-color: #7a853b !important;
+}
+
+.fighter {
+  background-color: #7f513e !important;
+}
+
+.monk,
+.gnome {
+  background-color: #51a5c5 !important;
+}
+
+.paladin,
+.dwarf {
+  background-color: #b59e54 !important;
+}
+
+.ranger,
+.half-orc {
+  background-color: #507f62 !important;
+}
+
+.rogue,
+.human {
+  background-color: #555752 !important;
+}
+
+.sorcerer,
+.tiefling {
+  background-color: #992e2e !important;
+}
+
+.warlock,
+.half-elf {
+  background-color: #7b469b !important;
+}
+
+.wizard {
+  background-color: #2a50a1 !important;
+}
+
+/*****Hidden*****/
+.hidden {
+  display: none;
+}

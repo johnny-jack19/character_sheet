@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D&D Character Sheet</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Quattrocento+Sans&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="welcome-section" class="section-div">
+        <h1>Welcome to D&D Character Creation!</h1>
+        <p>Click start to begin making your character</p>
+        <button onclick="nextPage('welcome-section', 'name-section')">Start</button>
+    </div>
+    <div id="name-section" class="hidden section-div">
+        <h2>What is your character's name?</h2>
+        <p id="current-name" class="displayed-input hidden"></p>
+        <div id="name-input-div">
+            <input id="name-input">
+            <button id="name-button" onclick="selectName()">Submit</button>
+        </div>
+        <div class="btn-container">
+            <button onclick="nextPage('name-section', 'welcome-section')">Back</button>
+            <button id="name-next" onclick="nextPage('name-section', 'class-section')" disabled>Next</button>
+        </div>
+    </div>
+    <div id="class-section" class="hidden section-div">
+        <h2>Choose a class</h2>
+        <p id="current-class" class="displayed-input hidden"></p>
+        <p>Click on a class to learn more</p>
+        <div id="class-container"></div>
+        <div class="btn-container">
+            <button onclick="nextPage('class-section', 'name-section')">Back</button>
+            <button id="class-next" onclick="nextPage('class-section', 'race-section')" disabled>Next</button>
+        </div>
+    </div>
+    <div id="race-section" class="hidden section-div">
+        <h2>Choose a race</h2>
+        <p id="current-race" class="displayed-input hidden"></p>
+        <p>Click on a race to learn more</p>
+        <div id="race-container"></div>
+        <div class="btn-container">
+            <button onclick="nextPage('race-section', 'class-section')">Back</button>
+            <button id="race-next" onclick="nextPage('race-section', 'alignment-section')" disabled>Next</button>
+        </div>
+    </div>
+    <div id="alignment-section" class="hidden section-div">
+        <h2>Choose an alignment</h2>
+        <p id="current-alignment" class="displayed-input hidden"></p>
+        <p>Click on an alignment to learn more</p>
+        <div id="alignment-container">
+            <div id="alignment-4" class="alignment-div"></div>
+            <div id="alignment-8" class="alignment-div"></div>
+            <div id="alignment-1" class="alignment-div"></div>
+            <div id="alignment-5" class="alignment-div"></div>
+            <div id="alignment-6" class="alignment-div"></div>
+            <div id="alignment-2" class="alignment-div"></div>
+            <div id="alignment-3" class="alignment-div"></div>
+            <div id="alignment-7" class="alignment-div"></div>
+            <div id="alignment-0" class="alignment-div"></div>
+        </div>
+        <div class="btn-container">
+            <button onclick="nextPage('alignment-section', 'race-section')">Back</button>
+            <button id="alignment-next" onclick="nextPage('alignment-section', 'rolling-stats-section')"
+                disabled>Next</button>
+        </div>
+    </div>
+    <div id="rolling-stats-section" class="hidden section-div">
+        <h2>Rolling Stats</h2>
+        <p>But first, do you want the standard array or do you want to roll for it?</p>
+        <div id="rolling-container">
+            <div class="roll-box">
+                <p>The standard array is 15, 14, 13, 12, 10, 8.</p>
+                <button onclick="takeStandardArray()">Standard Array</button>
+            </div>
+            <div class="roll-box">
+                <p>Rolling is rolling 6 d4's and dropping the lowest die. Repeat 6 times.</p>
+                <button onclick="rollForStats()">Roll for it</button>
+            </div>
+        </div>
+        <p>Warning! There is no turning back after this choice!</p>
+        <button onclick="viewCurrentChoices()">Choices</button>
+    </div>
+    <div id="picking-stats-section" class="hidden section-div">
+        <h2>Time to pick stats</h2>
+        <p id="current-stats"></p>
+        <div id="ability-container">
+            <button id="ability-4" class="ability-btn"></button>
+            <button id="ability-2" class="ability-btn"></button>
+            <button id="ability-1" class="ability-btn"></button>
+            <button id="ability-3" class="ability-btn"></button>
+            <button id="ability-5" class="ability-btn"></button>
+            <button id="ability-0" class="ability-btn"></button>
+        </div>
+    </div>
+    <div id="racial-bonus-section" class="hidden section-div">
+        <h2>Time to racial bonuses</h2>
+        <p id="racial-bonus"></p>
+        <div id="ability-container">
+            <button id="racial-bonus-4" class="racial-bonus-btn" disabled></button>
+            <button id="racial-bonus-2" class="racial-bonus-btn" disabled></button>
+            <button id="racial-bonus-1" class="racial-bonus-btn" disabled></button>
+            <button id="racial-bonus-3" class="racial-bonus-btn" disabled></button>
+            <button id="racial-bonus-5" class="racial-bonus-btn" disabled></button>
+            <button id="racial-bonus-0" class="racial-bonus-btn" disabled></button>
+        </div>
+    </div>
+    <div id="proficiency-section" class="hidden section-div">
+        <h2>Time to pick proficiencies</h2>
+        <p id="proficiency-info"></p>
+        <div id="proficiency-container"></div>
+    </div>
+    <div id="display-section" class="hidden section-div">
+        <h2>Display Section</h2>
+    </div>
+    <div id="overlay" class="overlay hidden"></div>
+    <div id="modal" class="modal hidden"></div>
+</body>
+<script src="fetchs.js"></script>
+<script src="utils.js"></script>
+<script src="characterCreation.js"></script>
+
+</html>
