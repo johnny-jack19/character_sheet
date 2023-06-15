@@ -87,7 +87,8 @@ th {
 .race-div,
 .alignment-div,
 .ability-btn,
-.racial-bonus-btn {
+.racial-bonus-btn,
+.proficiency-btn {
   border: #edf2f4 solid 2px;
   width: 25%;
   margin: 0.7em auto;
@@ -101,13 +102,15 @@ th {
 }
 
 .ability-btn,
-.racial-bonus-btn {
+.racial-bonus-btn,
+.proficiency-btn {
   background-color: #e70329;
   width: 28%;
 }
 
 .ability-btn:disabled,
-.racial-bonus-btn:disabled {
+.racial-bonus-btn:disabled,
+.proficiency-btn:disabled {
   background-color: #22232e;
   filter: brightness(70%);
   box-shadow: none;
@@ -117,7 +120,8 @@ th {
 .race-div:hover,
 .alignment-div:hover,
 .ability-btn:hover,
-.racial-bonus-btn:hover {
+.racial-bonus-btn:hover,
+.proficiency-btn:hover {
   box-shadow: inset 4px 4px 8px #4e4f57;
   filter: brightness(70%);
 }
@@ -300,7 +304,8 @@ th {
 #class-container,
 #race-container,
 #alignment-container,
-#ability-container {
+#ability-container,
+#proficiency-container {
   display: flex;
   flex-wrap: wrap;
   width: 85%;

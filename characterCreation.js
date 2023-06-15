@@ -548,6 +548,8 @@ function goToProficiencies() {
     );
   } else {
     nextPage("proficiency-section", "display-section");
+    proficiencyContainer.innerHTML = "";
+    makeCharacterSheet();
   }
 }
 

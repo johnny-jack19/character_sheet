@@ -70,6 +70,10 @@ async function getProficiencyData() {
       name: response.results[i].name,
       proficiencyBonus: false,
     };
+    if (response.results[i].index.slice(0, 5) === "skill") {
+      proficiencyData[response.results[i].index].name =
+        response.results[i].name.slice(7);
+    }
   }
   console.log(proficiencyData);
 }
