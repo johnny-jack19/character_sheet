@@ -1,16 +1,51 @@
 function makeCharacterSheet() {
   makeSheetStats();
   makeSheetSavingThrows();
-  document.getElementById("sheet-prof-bonus").innerHTML = profBonus;
+  document.getElementById("sheet-prof-bonus").innerHTML = `+${profBonus}`;
   makeSkillSheet();
   if (proficiencyData["skill-perception"].proficiencyBonus === true) {
-    document.getElementById("sheet-passive-wisdom").innerHTML =
-      10 + profBonus + Math.floor((finalStats.wis + racialBonus.wis - 10) / 2);
+    document.getElementById(
+      "sheet-passive-perception"
+    ).innerHTML = `Passive WIS Perception ${
+      10 + profBonus + Math.floor((finalStats.wis + racialBonus.wis - 10) / 2)
+    }`;
   } else {
-    document.getElementById("sheet-passive-wisdom").innerHTML =
-      10 + Math.floor((finalStats.wis + racialBonus.wis - 10) / 2);
+    document.getElementById(
+      "sheet-passive-perception"
+    ).innerHTML = `Passive WIS Perception ${
+      10 + Math.floor((finalStats.wis + racialBonus.wis - 10) / 2)
+    }`;
+  }
+  if (proficiencyData["skill-investigation"].proficiencyBonus === true) {
+    document.getElementById(
+      "sheet-passive-investigation"
+    ).innerHTML = `Passive INT Investigation ${
+      10 + profBonus + Math.floor((finalStats.int + racialBonus.int - 10) / 2)
+    }`;
+  } else {
+    document.getElementById(
+      "sheet-passive-investigation"
+    ).innerHTML = `Passive INT Investigation ${
+      10 + Math.floor((finalStats.int + racialBonus.int - 10) / 2)
+    }`;
+  }
+  if (proficiencyData["skill-insight"].proficiencyBonus === true) {
+    document.getElementById(
+      "sheet-passive-insight"
+    ).innerHTML = `Passive WIS Insight ${
+      10 + profBonus + Math.floor((finalStats.wis + racialBonus.wis - 10) / 2)
+    }`;
+  } else {
+    document.getElementById(
+      "sheet-passive-insight"
+    ).innerHTML = `Passive WIS Insight ${
+      10 + Math.floor((finalStats.wis + racialBonus.wis - 10) / 2)
+    }`;
   }
   makeTraits();
+  makeDefenses();
+  makeInfo();
+  makeOtherProfs();
 }
 
 const abilityArray = ["str", "dex", "con", "int", "wis", "cha"];
@@ -37,11 +72,23 @@ const skillList = [
 
 function makeSheetStats() {
   for (let i = 0; i < 6; i++) {
+    if (
+      Math.floor(
+        (finalStats[abilityArray[i]] + racialBonus[abilityArray[i]] - 10) / 2
+      ) < 0
+    ) {
+      document.getElementById(`${abilityArray[i]}-mod`).innerHTML = Math.floor(
+        (finalStats[abilityArray[i]] + racialBonus[abilityArray[i]] - 10) / 2
+      );
+    } else {
+      document.getElementById(
+        `${abilityArray[i]}-mod`
+      ).innerHTML = `+${Math.floor(
+        (finalStats[abilityArray[i]] + racialBonus[abilityArray[i]] - 10) / 2
+      )}`;
+    }
     document.getElementById(`${abilityArray[i]}-stat`).innerHTML =
       finalStats[abilityArray[i]] + racialBonus[abilityArray[i]];
-    document.getElementById(`${abilityArray[i]}-mod`).innerHTML = Math.floor(
-      (finalStats[abilityArray[i]] + racialBonus[abilityArray[i]] - 10) / 2
-    );
   }
 }
 
@@ -54,15 +101,48 @@ function makeSheetSavingThrows() {
       document
         .getElementById(`${abilityArray[i]}-saving-throw-prof`)
         .classList.add("selected");
-      document.getElementById(`${abilityArray[i]}-saving-throw-mod`).innerHTML =
+      if (
         Math.floor(
           (finalStats[abilityArray[i]] + racialBonus[abilityArray[i]] - 10) / 2
-        ) + profBonus;
+        ) +
+          profBonus <
+        0
+      ) {
+        document.getElementById(
+          `${abilityArray[i]}-saving-throw-mod`
+        ).innerHTML =
+          Math.floor(
+            (finalStats[abilityArray[i]] + racialBonus[abilityArray[i]] - 10) /
+              2
+          ) + profBonus;
+      } else {
+        document.getElementById(
+          `${abilityArray[i]}-saving-throw-mod`
+        ).innerHTML = `+${
+          Math.floor(
+            (finalStats[abilityArray[i]] + racialBonus[abilityArray[i]] - 10) /
+              2
+          ) + profBonus
+        }`;
+      }
     } else {
-      document.getElementById(`${abilityArray[i]}-saving-throw-mod`).innerHTML =
+      if (
         Math.floor(
+          (finalStats[abilityArray[i]] + racialBonus[abilityArray[i]] - 10) / 2
+        ) < 0
+      ) {
+        document.getElementById(
+          `${abilityArray[i]}-saving-throw-mod`
+        ).innerHTML = Math.floor(
           (finalStats[abilityArray[i]] + racialBonus[abilityArray[i]] - 10) / 2
         );
+      } else {
+        document.getElementById(
+          `${abilityArray[i]}-saving-throw-mod`
+        ).innerHTML = `+${Math.floor(
+          (finalStats[abilityArray[i]] + racialBonus[abilityArray[i]] - 10) / 2
+        )}`;
+      }
     }
   }
 }
@@ -72,38 +152,106 @@ function makeSkillSheet() {
   for (let i = 0; i < 18; i++) {
     if (proficiencyData[skillList[i][0]].proficiencyBonus === true) {
       skillSheet.innerHTML += `
-                <div class="skill-div">
-                    <div id="${skillList[i][0]}" class="bubble selected"></div>
-                    <div id="${skillList[i][0]}-mod">${
+        <div class="skill-div">
+          <div id="${skillList[i][0]}" class="bubble selected"></div>
+          <div class="skill-gov">${skillList[i][1].toUpperCase()}</div>
+          <div class="skill-name">${proficiencyData[skillList[i][0]].name}</div>
+          <div id="${skillList[i][0]}-mod" class="skill-mod">${
         Math.floor(
           (finalStats[skillList[i][1]] + racialBonus[skillList[i][1]] - 10) / 2
         ) + profBonus
       }</div>
-                    <div>${proficiencyData[skillList[i][0]].name} (${skillList[
-        i
-      ][1].toUpperCase()})</div>
-            </div>
-            `;
+        </div>
+      `;
+      if (
+        Math.floor(
+          (finalStats[skillList[i][1]] + racialBonus[skillList[i][1]] - 10) / 2
+        ) +
+          profBonus >=
+        0
+      ) {
+        document.getElementById(`${skillList[i][0]}-mod`).innerHTML = `+${
+          Math.floor(
+            (finalStats[skillList[i][1]] + racialBonus[skillList[i][1]] - 10) /
+              2
+          ) + profBonus
+        }`;
+      }
     } else {
       skillSheet.innerHTML += `
-                <div class="skill-div">
-                    <div id="${skillList[i][0]}" class="bubble selected"></div>
-                    <div id="${skillList[i][0]}-mod">${Math.floor(
+        <div class="skill-div">
+          <div id="${skillList[i][0]}" class="bubble"></div>
+          <div class="skill-gov">${skillList[i][1].toUpperCase()}</div>
+          <div class="skill-name">${proficiencyData[skillList[i][0]].name}</div>
+          <div id="${skillList[i][0]}-mod" class="skill-mod">${Math.floor(
         (finalStats[skillList[i][1]] + racialBonus[skillList[i][1]] - 10) / 2
       )}</div>
-                    <div>${proficiencyData[skillList[i][0]].name} (${skillList[
-        i
-      ][1].toUpperCase()})</div>
-            </div>
-            `;
+        </div>
+      `;
+      if (
+        Math.floor(
+          (finalStats[skillList[i][1]] + racialBonus[skillList[i][1]] - 10) / 2
+        ) >= 0
+      ) {
+        document.getElementById(
+          `${skillList[i][0]}-mod`
+        ).innerHTML = `+${Math.floor(
+          (finalStats[skillList[i][1]] + racialBonus[skillList[i][1]] - 10) / 2
+        )}`;
+      }
     }
   }
 }
 
 function makeTraits() {
+  document.getElementById("sheet-traits").innerHTML = `<h3>Traits</h3>`;
   for (let i = 0; i < raceData[selectedRace].traits.length; i++) {
     document.getElementById("sheet-traits").innerHTML += `
         <p>${raceData[selectedRace].traits[i].name}</p>
     `;
   }
+}
+
+function makeDefenses() {
+  let hitDie = classData[selectedClass].hit_die;
+  document.getElementById("hp-max").innerHTML =
+    hitDie + Math.floor((finalStats.con + racialBonus.con - 10) / 2);
+  document.getElementById("total-hit-die").innerHTML = `1 d${hitDie}`;
+  if (Math.floor((finalStats.dex + racialBonus.dex - 10) / 2) >= 0) {
+    document.getElementById("init-mod").innerHTML = `+${Math.floor(
+      (finalStats.dex + racialBonus.dex - 10) / 2
+    )}`;
+  } else {
+    document.getElementById("init-mod").innerHTML = `${Math.floor(
+      (finalStats.dex + racialBonus.dex - 10) / 2
+    )}`;
+  }
+  document.getElementById(
+    "speed-mod"
+  ).innerHTML = `${raceData[selectedRace].speed} ft.`;
+}
+
+function makeInfo() {
+  document.getElementById("sheet-name").innerHTML = selectedName;
+  document.getElementById("sheet-class").innerHTML =
+    classData[selectedClass].name;
+  document.getElementById("sheet-race").innerHTML = raceData[selectedRace].name;
+  document.getElementById("sheet-align").innerHTML =
+    alignmentData[selectedAlignment].name;
+}
+
+function makeOtherProfs() {
+  let profArray = Object.keys(proficiencyData);
+  document.getElementById("sheet-other-profs").innerHTML = "";
+  profArray.forEach((prof) => {
+    if (
+      prof.slice(0, 5) !== "skill" &&
+      prof.slice(0, 6) !== "saving" &&
+      proficiencyData[prof].proficiencyBonus === true
+    ) {
+      document.getElementById(
+        "sheet-other-profs"
+      ).innerHTML += `<p>${proficiencyData[prof].name}</p>`;
+    }
+  });
 }

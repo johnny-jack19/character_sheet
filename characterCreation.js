@@ -58,7 +58,7 @@ makeClasses = () => {
 
 addClassesToPage = () => {
   setTimeout(() => {
-    if (classData.length > 0) {
+    if (classData.length > 11) {
       makeClasses();
       addListerToClasses();
     } else {
@@ -128,7 +128,7 @@ makeRaces = () => {
 
 addRacesToPage = () => {
   setTimeout(() => {
-    if (raceData.length > 0) {
+    if (raceData.length > 8) {
       makeRaces();
       addListerToRaces();
     } else {
@@ -203,7 +203,7 @@ makeAlignments = () => {
 
 addAlignmentsToPage = () => {
   setTimeout(() => {
-    if (alignmentData.length > 0) {
+    if (alignmentData.length === 9) {
       makeAlignments();
       addListerToAlignments();
     } else {
@@ -393,7 +393,7 @@ makeAbilityScores = () => {
 
 addAbilityScoresToPage = () => {
   setTimeout(() => {
-    if (abilityScoreData.length > 0) {
+    if (abilityScoreData.length > 5) {
       makeAbilityScores();
       addListerToAbilityScores();
       addListerToRacialBonuses();

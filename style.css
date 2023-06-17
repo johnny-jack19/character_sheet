@@ -238,6 +238,53 @@ th {
   justify-content: center;
 }
 
+.bubble {
+  background-color: #0f0f14;
+  border-radius: 50%;
+  height: 1em;
+  width: 1em;
+}
+
+.selected {
+  background-color: #992e2e;
+}
+
+.skill-div,
+.saving-throw-div {
+  display: flex;
+}
+
+.skill-mod,
+.saving-throw-mod {
+  text-align: right;
+  flex-grow: 1;
+  margin-left: 1.5em;
+}
+
+.saving-throw-name {
+  margin-left: 1em;
+}
+
+.skill-name,
+.saving-throw-name {
+  flex-grow: 1;
+}
+
+.skill-gov {
+  width: 3em;
+  margin-left: 0.5em;
+}
+
+.stat-box {
+  display: flex;
+  flex-direction: column;
+  border: #0f0f14 1px solid;
+  justify-content: space-around;
+  align-content: center;
+  text-align: center;
+  border-radius: 10px;
+}
+
 .top-left {
   border-radius: 10px 0 0 0;
 }
@@ -327,6 +374,15 @@ th {
   margin: 2em auto;
 }
 
+#sheet-stats {
+  display: flex;
+}
+
+#display-section {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 /*****Colors*****/
 .barbarian,
 .dragonborn {
@@ -387,5 +443,5 @@ th {
 
 /*****Hidden*****/
 .hidden {
-  display: none;
+  display: none !important;
 }
