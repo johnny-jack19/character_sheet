@@ -144,6 +144,7 @@ addListerToRaces = () => {
       const raceInfo = raceData[parseInt(raceList[i].id.slice(5))];
       modal.innerHTML = `
         <h3 class="${raceInfo.index}">${raceInfo.name}</h3>
+        <div class="scroll-box">
         <h4>Size:</h4>
         <p>${raceInfo.size}</p>
         <h4>Speed:</h4>
@@ -172,6 +173,7 @@ addListerToRaces = () => {
         <p>${raceInfo.age}</p>
         <h4>Alignment:</h4>
         <p>${raceInfo.alignment}</p>
+        </div>
         <div class="btn-container">
           <button onclick="closeModal()">Keep looking</button>
           <button onclick="selectRace(${i})">Make a ${raceInfo.name}</button>

@@ -157,70 +157,93 @@
       <div id="proficiency-container"></div>
     </div>
     <div id="display-section" class="hidden section-div">
-      <div id="display-head-left" class="display-head">
-        <div id="logo"></div>
-        <div id="sheet-name-div">
-          <div id="sheet-name"></div>
-          <div>Name</div>
+      <div id="display-wrapper">
+        <div id="display-head-left" class="display-head">
+          <h2 id="logo">Character Sheet</h2>
+          <div id="sheet-name-div">
+            <div id="sheet-name"></div>
+            <div>Name</div>
+          </div>
         </div>
-      </div>
-      <div id="display-head-left" class="display-head">
-        <div class="info-box">
-          <div id="sheet-class"></div>
-          <div>Class</div>
+        <div id="display-head-right" class="display-head">
+          <div class="info-box">
+            <div id="sheet-class"></div>
+            <div>Class</div>
+          </div>
+          <div class="info-box">
+            <div id="sheet-level">1</div>
+            <div>Level</div>
+          </div>
+          <div class="info-box">
+            <div id="sheet-race"></div>
+            <div>Race</div>
+          </div>
+          <div class="info-box">
+            <div id="sheet-align"></div>
+            <div>Alignment</div>
+          </div>
         </div>
-        <div class="info-box">
-          <div id="sheet-level">1</div>
-          <div>Level</div>
+        <div id="sheet-stats">
+          <div id="str" class="stat-box">
+            <p>STRENGTH</p>
+            <p id="str-mod"></p>
+            <p id="str-stat"></p>
+          </div>
+          <div id="dex" class="stat-box">
+            <p>DEXTERITY</p>
+            <p id="dex-mod"></p>
+            <p id="dex-stat"></p>
+          </div>
+          <div id="con" class="stat-box">
+            <p>CONSTITUTION</p>
+            <p id="con-mod"></p>
+            <p id="con-stat"></p>
+          </div>
+          <div id="int" class="stat-box">
+            <p>INTELLIGENCE</p>
+            <p id="int-mod"></p>
+            <p id="int-stat"></p>
+          </div>
+          <div id="wis" class="stat-box">
+            <p>WISDOM</p>
+            <p id="wis-mod"></p>
+            <p id="wis-stat"></p>
+          </div>
+          <div id="cha" class="stat-box">
+            <p>CHARISMA</p>
+            <p id="cha-mod"></p>
+            <p id="cha-stat"></p>
+          </div>
         </div>
-        <div class="info-box">
-          <div id="sheet-race"></div>
-          <div>Race</div>
+        <div id="other-stats">
+          <div id="init-div">
+            <div id="init-name">INITIATIVE</div>
+            <div id="init-mod"></div>
+          </div>
+          <div id="speed-div">
+            <div id="speed-walking">Walking</div>
+            <div id="speed-mod"></div>
+            <div id="speed">Speed</div>
+          </div>
+          <div id="sheet-prof-bonus-div">
+            <div id="sheet-prof-bonus-title">Proficiency</div>
+            <div id="sheet-prof-bonus"></div>
+            <div id="sheet-prof-bonus-bonus">Bonus</div>
+          </div>
         </div>
-        <div class="info-box">
-          <div id="sheet-align"></div>
-          <div>Alignment</div>
+        <div id="sheet-defense">
+          <h3>Defenses</h3>
+          <div class="def-div">
+            <div id="hp-max-title">Max Hit Points</div>
+            <div id="hp-max"></div>
+          </div>
+          <div class="def-div">
+            <div id="total-hit-die-title">Hit Dice</div>
+            <div id="total-hit-die"></div>
+          </div>
         </div>
-      </div>
-      <div id="sheet-stats">
-        <div id="str" class="stat-box">
-          <p>STRENGTH</p>
-          <p id="str-mod"></p>
-          <p id="str-stat"></p>
-        </div>
-        <div id="dex" class="stat-box">
-          <p>DEXTERITY</p>
-          <p id="dex-mod"></p>
-          <p id="dex-stat"></p>
-        </div>
-        <div id="con" class="stat-box">
-          <p>CONSTITUTION</p>
-          <p id="con-mod"></p>
-          <p id="con-stat"></p>
-        </div>
-        <div id="int" class="stat-box">
-          <p>INTELLIGENCE</p>
-          <p id="int-mod"></p>
-          <p id="int-stat"></p>
-        </div>
-        <div id="wis" class="stat-box">
-          <p>WISDOM</p>
-          <p id="wis-mod"></p>
-          <p id="wis-stat"></p>
-        </div>
-        <div id="cha" class="stat-box">
-          <p>CHARISMA</p>
-          <p id="cha-mod"></p>
-          <p id="cha-stat"></p>
-        </div>
-      </div>
-      <div id="sheet-prof-bonus-div">
-        <div id="sheet-prof-bonus-title">Proficiency</div>
-        <div id="sheet-prof-bonus"></div>
-        <div id="sheet-prof-bonus-bonus">Bonus</div>
-      </div>
-      <div id="sheet-profs">
         <div id="sheet-saving-throws">
+          <h3>Saving Throws</h3>
           <div id="str-saving-throw" class="saving-throw-div">
             <div id="str-saving-throw-prof" class="bubble"></div>
             <div class="saving-throw-name">Strength</div>
@@ -251,30 +274,17 @@
             <div class="saving-throw-name">Charisma</div>
             <div id="cha-saving-throw-mod" class="saving-throw-mod"></div>
           </div>
-          <p>SAVING THROWS</p>
         </div>
+        <div id="sheet-skills"></div>
+        <div id="passive">
+          <h3>Senses</h3>
+          <div id="sheet-passive-perception"></div>
+          <div id="sheet-passive-investigation"></div>
+          <div id="sheet-passive-insight"></div>
+        </div>
+        <div id="sheet-traits"></div>
+        <div id="sheet-other-profs"></div>
       </div>
-      <div id="sheet-skills"></div>
-      <div id="sheet-passive-perception"></div>
-      <div id="sheet-passive-investigation"></div>
-      <div id="sheet-passive-insight"></div>
-      <div id="sheet-other-profs"></div>
-      <div id="init-div">
-        <div id="init-name">INITIATIVE</div>
-        <div id="init-mod"></div>
-      </div>
-      <div id="speed-div">
-        <div id="speed-walking">Walking</div>
-        <div id="speed-mod"></div>
-        <div id="speed">Speed</div>
-      </div>
-      <div id="sheet-defense">
-        <div id="hp-max-title">Max Hit Points</div>
-        <div id="hp-max"></div>
-        <div id="total-hit-die-title">Hit Dice</div>
-        <div id="total-hit-die"></div>
-      </div>
-      <div id="sheet-traits"></div>
     </div>
     <div id="overlay" class="overlay hidden"></div>
     <div id="modal" class="modal hidden"></div>

@@ -1,46 +1,48 @@
 function makeCharacterSheet() {
   makeSheetStats();
   makeSheetSavingThrows();
-  document.getElementById("sheet-prof-bonus").innerHTML = `+${profBonus}`;
+  document.getElementById(
+    "sheet-prof-bonus"
+  ).innerHTML = `<p>+${profBonus}</p>`;
   makeSkillSheet();
   if (proficiencyData["skill-perception"].proficiencyBonus === true) {
     document.getElementById(
       "sheet-passive-perception"
-    ).innerHTML = `Passive WIS Perception ${
+    ).innerHTML = `<div>Passive WIS Perception </div><div>${
       10 + profBonus + Math.floor((finalStats.wis + racialBonus.wis - 10) / 2)
-    }`;
+    }</div>`;
   } else {
     document.getElementById(
       "sheet-passive-perception"
-    ).innerHTML = `Passive WIS Perception ${
+    ).innerHTML = `<div>Passive WIS Perception </div><div>${
       10 + Math.floor((finalStats.wis + racialBonus.wis - 10) / 2)
-    }`;
+    }</div>`;
   }
   if (proficiencyData["skill-investigation"].proficiencyBonus === true) {
     document.getElementById(
       "sheet-passive-investigation"
-    ).innerHTML = `Passive INT Investigation ${
+    ).innerHTML = `<div>Passive INT Investigation </div><div>${
       10 + profBonus + Math.floor((finalStats.int + racialBonus.int - 10) / 2)
-    }`;
+    }</div>`;
   } else {
     document.getElementById(
       "sheet-passive-investigation"
-    ).innerHTML = `Passive INT Investigation ${
+    ).innerHTML = `<div>Passive INT Investigation </div><div>${
       10 + Math.floor((finalStats.int + racialBonus.int - 10) / 2)
-    }`;
+    }</div>`;
   }
   if (proficiencyData["skill-insight"].proficiencyBonus === true) {
     document.getElementById(
       "sheet-passive-insight"
-    ).innerHTML = `Passive WIS Insight ${
+    ).innerHTML = `<div>Passive WIS Insight </div><div>${
       10 + profBonus + Math.floor((finalStats.wis + racialBonus.wis - 10) / 2)
-    }`;
+    }</div>`;
   } else {
     document.getElementById(
       "sheet-passive-insight"
-    ).innerHTML = `Passive WIS Insight ${
+    ).innerHTML = `<div>Passive WIS Insight </div><div>${
       10 + Math.floor((finalStats.wis + racialBonus.wis - 10) / 2)
-    }`;
+    }</div>`;
   }
   makeTraits();
   makeDefenses();
@@ -149,6 +151,7 @@ function makeSheetSavingThrows() {
 
 function makeSkillSheet() {
   const skillSheet = document.getElementById("sheet-skills");
+  skillSheet.innerHTML = `<h3>Skills</h3>`;
   for (let i = 0; i < 18; i++) {
     if (proficiencyData[skillList[i][0]].proficiencyBonus === true) {
       skillSheet.innerHTML += `
@@ -214,21 +217,16 @@ function makeTraits() {
 
 function makeDefenses() {
   let hitDie = classData[selectedClass].hit_die;
-  document.getElementById("hp-max").innerHTML =
-    hitDie + Math.floor((finalStats.con + racialBonus.con - 10) / 2);
-  document.getElementById("total-hit-die").innerHTML = `1 d${hitDie}`;
-  if (Math.floor((finalStats.dex + racialBonus.dex - 10) / 2) >= 0) {
-    document.getElementById("init-mod").innerHTML = `+${Math.floor(
-      (finalStats.dex + racialBonus.dex - 10) / 2
-    )}`;
-  } else {
-    document.getElementById("init-mod").innerHTML = `${Math.floor(
-      (finalStats.dex + racialBonus.dex - 10) / 2
-    )}`;
-  }
+  document.getElementById("hp-max").innerHTML = `<p>${
+    hitDie + Math.floor((finalStats.con + racialBonus.con - 10) / 2)
+  }</p>`;
+  document.getElementById("total-hit-die").innerHTML = `<p>1 d${hitDie}</p>`;
+  document.getElementById("init-mod").innerHTML = `<p>+${Math.floor(
+    (finalStats.dex + racialBonus.dex - 10) / 2
+  )}</p>`;
   document.getElementById(
     "speed-mod"
-  ).innerHTML = `${raceData[selectedRace].speed} ft.`;
+  ).innerHTML = `<p>${raceData[selectedRace].speed} ft.</p>`;
 }
 
 function makeInfo() {
@@ -242,7 +240,8 @@ function makeInfo() {
 
 function makeOtherProfs() {
   let profArray = Object.keys(proficiencyData);
-  document.getElementById("sheet-other-profs").innerHTML = "";
+  document.getElementById("sheet-other-profs").innerHTML =
+    "<h3>Proficiencies</h3>";
   profArray.forEach((prof) => {
     if (
       prof.slice(0, 5) !== "skill" &&

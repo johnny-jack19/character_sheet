@@ -1,9 +1,17 @@
 /*****Elements*****/
 body {
   background-color: #22232e;
-  background-image: linear-gradient(to bottom right, #22232e, #898a91, #22232e);
+  background-image: linear-gradient(
+    to right,
+    #898a91,
+    #0f0f14,
+    #898a91,
+    #0f0f14,
+    #898a91
+  );
   font-family: "Quattrocento Sans", sans-serif;
-  height: 100vh;
+  height: auto;
+  min-height: 100vh;
 }
 
 button {
@@ -35,10 +43,12 @@ h4 {
 
 h1 {
   font-size: 3em;
+  text-align: center;
 }
 
 h2 {
   font-size: 2.5em;
+  text-align: center;
 }
 
 h3 {
@@ -188,12 +198,14 @@ th {
 .modal {
   position: fixed;
   height: 85vh;
-  width: 85vw;
+  width: 85%;
   top: 7.5vh;
-  left: 7.5vw;
+  left: 50%;
+  transform: translate(-50%, 0);
   z-index: 3;
   border-radius: 20px;
   background-color: #55575e;
+  max-width: 650px;
 }
 
 .overlay {
@@ -243,6 +255,8 @@ th {
   border-radius: 50%;
   height: 1em;
   width: 1em;
+  min-width: 1em;
+  margin-left: 1em;
 }
 
 .selected {
@@ -252,13 +266,18 @@ th {
 .skill-div,
 .saving-throw-div {
   display: flex;
+  border: #e70329 1px solid;
+  border-radius: 5px;
+  width: 90%;
+  margin: 0.2em auto 0 auto;
+  align-items: center;
 }
 
 .skill-mod,
 .saving-throw-mod {
   text-align: right;
   flex-grow: 1;
-  margin-left: 1.5em;
+  margin: 0 1.5em;
 }
 
 .saving-throw-name {
@@ -278,11 +297,38 @@ th {
 .stat-box {
   display: flex;
   flex-direction: column;
-  border: #0f0f14 1px solid;
+  border: #0f0f14 3px solid;
   justify-content: space-around;
+  background-color: #ef233c;
   align-content: center;
   text-align: center;
   border-radius: 10px;
+  width: 14%;
+  height: auto;
+  margin: auto;
+}
+.stat-box p:first-child {
+  font-size: 1em;
+  color: #edf2f4 !important;
+}
+
+.stat-box p:nth-child(2) {
+  border: #0f0f14 3px solid;
+  border-radius: 5px;
+  font-size: 2em;
+  margin: 0.2em auto;
+  background-color: #edf2f4;
+  width: 55%;
+  padding: 0.3em;
+}
+
+.stat-box p:nth-child(3) {
+  border: #0f0f14 3px solid;
+  background-color: #edf2f4;
+  border-radius: 50%;
+  width: 1.5em;
+  padding: 0.2em;
+  margin: auto;
 }
 
 .top-left {
@@ -364,6 +410,7 @@ th {
 
 #name-input-div {
   width: 65%;
+  max-width: 600px;
 }
 
 #rolling-container {
@@ -444,4 +491,244 @@ th {
 /*****Hidden*****/
 .hidden {
   display: none !important;
+}
+
+#display-wrapper div p {
+  color: #0f0f14;
+}
+#display-wrapper div div {
+  padding: 0.2em;
+}
+
+#display-section {
+  height: auto;
+}
+
+#display-wrapper {
+  display: grid;
+  width: 85%;
+  border: #0f0f14 3px solid;
+  border-radius: 5px;
+  grid-template-areas:
+    "headOne   headOne   headTwo    headTwo"
+    "stats     stats     stats      stats"
+    "def       skills    otherStats otherStats"
+    "saving    skills    profs      traits"
+    "passive   skills    profs      traits";
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1em;
+  padding: 1em;
+  background-color: #b3b3b4;
+}
+
+#display-head-left {
+  grid-area: headOne;
+  background: url(/images/vecteezy_chinese-dragon-png-ai-generative_24500717_123.png);
+  background-size: 15em 15em;
+  background-repeat: no-repeat;
+  background-color: #ef233c;
+  background-position: 2% 50%;
+  border: #0f0f14 3px solid;
+  border-right: none;
+  border-radius: 10px 0 0 10px;
+  width: 100%;
+  margin: 0;
+  margin-left: 0.5em;
+}
+
+#logo {
+  color: #edf2f4;
+  text-align: right;
+  margin-right: 1em;
+}
+
+#display-head-right {
+  grid-area: headTwo;
+  width: 100%;
+  border: #0f0f14 3px solid;
+  border-left: none;
+  border-radius: 0 10px 10px 0;
+  display: flex;
+  background-color: #ef233c;
+  flex-wrap: wrap;
+  margin: 0;
+  margin-left: -0.5em;
+}
+
+.info-box {
+  border: #0f0f14 5px solid;
+  width: 45%;
+  margin: auto;
+  padding: 0 !important;
+}
+
+#sheet-name-div {
+  border: #0f0f14 5px solid;
+  width: 45%;
+  margin: auto 1em 1em auto;
+  padding: 0 !important;
+}
+
+.info-box > div:first-child,
+#sheet-name-div > div:first-child {
+  text-align: center;
+  border-bottom: #0f0f14 1px solid;
+  background-color: #edf2f4;
+  padding: 0.5em;
+}
+
+.info-box > div:nth-child(2),
+#sheet-name-div > div:nth-child(2) {
+  text-align: center;
+  padding: 0.5em;
+  border-bottom: #0f0f14 1px solid;
+  background-color: #c2c4c7;
+}
+
+#sheet-stats {
+  grid-area: stats;
+}
+
+#other-stats {
+  grid-area: otherStats;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+#sheet-defense {
+  grid-area: def;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#sheet-skills {
+  grid-area: skills;
+}
+
+#sheet-saving-throws {
+  grid-area: saving;
+}
+
+#passive {
+  grid-area: passive;
+}
+
+#sheet-other-profs {
+  grid-area: profs;
+}
+
+#sheet-traits {
+  grid-area: traits;
+}
+
+#passive,
+#sheet-defense,
+#sheet-skills,
+#sheet-traits,
+#sheet-other-profs,
+#sheet-saving-throws {
+  border: #0f0f14 3px solid;
+  border-radius: 10px;
+  background-color: #edf2f4;
+}
+
+#display-wrapper h3 {
+  color: #edf2f4;
+  background-color: #e70329;
+  text-align: center;
+  border-radius: 8px 8px 0 0;
+  margin: 0;
+  padding: 0.2em 0;
+  width: 100%;
+}
+
+#speed-div,
+#init-div,
+#sheet-prof-bonus-div {
+  border: #0f0f14 3px solid;
+  border-radius: 10px;
+  background-color: #ef233c;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
+  height: 5em;
+  width: 30%;
+  height: 80%;
+  margin: auto;
+  align-self: auto;
+  color: #edf2f4;
+}
+
+#sheet-prof-bonus,
+#speed-mod,
+#init-mod {
+  border: #0f0f14 3px solid;
+  border-radius: 5px;
+  color: #0f0f14;
+  background-color: #edf2f4;
+  width: 55%;
+  height: 50%;
+  align-items: center;
+  margin: auto;
+  font-size: 1.2em;
+}
+
+.def-div {
+  border: #e70329 1px solid;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 40%;
+  margin: 0.5em auto;
+  border-radius: 5px;
+}
+
+.def-div div:first-child {
+  font-weight: 600;
+}
+
+.def-div div:nth-child(2) {
+  border: 1px #0f0f14 solid;
+  width: 70%;
+  height: 50%;
+  margin: auto;
+  vertical-align: middle;
+}
+
+#passive > div {
+  border: #e70329 1px solid;
+  border-radius: 5px;
+  margin: 0.3em auto;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+}
+
+#passive > div > div:nth-child(2) {
+  color: #edf2f4;
+  background-color: #ef233c;
+  border-radius: 50%;
+  width: 1em;
+  height: 1em;
+  text-align: center;
+  border: #0f0f14 1px solid;
+}
+
+.scroll-box {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 70%;
+  width: 90%;
+  margin: auto;
+}
+
+#sheet-traits p,
+#sheet-other-profs p {
+  margin: 1em;
+}
+
+.section-div {
+  min-height: 100vh;
 }
