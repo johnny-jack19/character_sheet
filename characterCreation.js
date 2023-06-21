@@ -74,6 +74,7 @@ addListerToClasses = () => {
       const classInfo = classData[parseInt(classList[i].id.slice(6))];
       modal.innerHTML = `
         <h3 class="${classInfo.index}">${classInfo.name}</h3>
+        <div class="scroll-box">
         <h4>Hit die:</h4>
         <p>d${classInfo.hit_die}</p>
         <h4>Proficiencies:</h4>
@@ -97,6 +98,7 @@ addListerToClasses = () => {
         (skill) => `${skill.item.name.slice(6)}`
       )}
       </p>
+      </div>
       <div class="btn-container">
         <button onclick="closeModal()">Keep looking</button>
         <button onclick="selectClass(${i})">Make a ${classInfo.name}</button>

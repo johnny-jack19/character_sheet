@@ -226,7 +226,7 @@ function makeDefenses() {
   )}</p>`;
   document.getElementById(
     "speed-mod"
-  ).innerHTML = `<p>${raceData[selectedRace].speed} ft.</p>`;
+  ).innerHTML = `<p>${raceData[selectedRace].speed}</p>`;
 }
 
 function makeInfo() {
